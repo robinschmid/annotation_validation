@@ -1,0 +1,15 @@
+pandas==2.0.2
+pandera==0.15.1
+dash-uploader
+packaging==21.3.0
+dash-bootstrap-templates
+dash
+
+
+# MCES
+#git+git://github.com/AlBi-HHU/myopic-mces.git
+joblib
+rdkit
+networkx
+pulp
+scipy
