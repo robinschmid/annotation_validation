@@ -3,11 +3,11 @@ import uuid
 import dash
 import dash_uploader as du
 import dash_bootstrap_components as dbc
-from dash_bootstrap_templates import ThemeChangerAIO, template_from_url
-from dash import html, dcc, Input, Output, State, callback
+from dash_bootstrap_templates import ThemeChangerAIO
+from dash import html, Output
 from dash.dash_table import DataTable
 from dash.html import Div
-import pandas_utils as pu
+from utils import pandas_utils as pu
 import annotation_validator
 
 df = pu.read_dataframe("../example_data/casmi2022.tsv")
@@ -71,13 +71,13 @@ def get_app_layout():
     return dbc.Container(
         [
             theme_change,
-            html.H4("Upload data", className=header_box_style),
+            html.H4("Upload metadata", className=header_box_style),
             get_upload_component("upload_data"),
             html.Div(id='current_file', className='dbc'),
-            html.H4("Issues with input data table", className=header_box_style),
+            html.H4("Issues with input metadata table", className=header_box_style),
             issues_table,
             # html.Br(),
-            html.H4("Parsed input data", className=header_box_style),
+            html.H4("Parsed input metadata", className=header_box_style),
             data_table,
             Div(id='upload_output')
         ],
@@ -94,8 +94,8 @@ app.layout = get_app_layout()
 @du.callback(
     output=
     [
-        Output("data_table", "data"),
-        Output("issues_table", "data"),
+        Output("data_table", "metadata"),
+        Output("issues_table", "metadata"),
         Output("current_file", "children"),
     ],
     id="upload_data",

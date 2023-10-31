@@ -1,6 +1,6 @@
 import pandas as pd
 from pandera.errors import SchemaErrors
-import pandas_utils as pu
+from utils import pandas_utils as pu
 import data_schema
 
 def validate_submission(df: pd.DataFrame, file=None) -> pd.DataFrame:
